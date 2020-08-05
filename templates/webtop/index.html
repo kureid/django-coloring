@@ -1,0 +1,21 @@
+{% extends 'webtop/base.html' %} {% load static %} {% block content %}
+<h1>彩色ゲーム　実験用ページ</h1>
+<img src="{% static "images/obon.png" %}" alt="表示できません">
+<p>{{ insert1 }}</p>
+<p>夏，暑いですよね．</p>
+
+<p>{{ insert_forms | safe }}</p>
+<form action="{% url 'webtop:index' %}" method="post">
+  <table>
+    <tr>
+      <td>入力フォーム</td>
+    </tr>
+    {% csrf_token %} {{ form.as_table }}
+    <tr>
+      <td>
+        <input type="submit" value="送信" />
+      </td>
+    </tr>
+  </table>
+</form>
+{% endblock content %}
